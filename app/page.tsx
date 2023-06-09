@@ -1,5 +1,3 @@
-import prisma from "@/prisma/client";
-import Image from "next/image";
 import Post from "./Post";
 
 async function getPosts() {
