@@ -23,7 +23,7 @@ export default function Home() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/post`)
+    fetch(`https://with-prisma-two.vercel.app/api/post`)
       .then((response) => response.json())
       .then((data) => setData(data));
     console.log(data);
