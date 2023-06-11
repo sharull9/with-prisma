@@ -1,26 +1,27 @@
-import Post from "./Post";
+import Card from "./Card";
 
 async function getPosts() {
-  const res = await fetch(`/api/post`);
+  const res = await fetch(`${process.env.BASE_URL}/api/post`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
   return res.json();
 }
 
 type post = {
   id: number;
   title: string;
-  content?: string;
+  content?: string | null;
   published: boolean;
 };
 
 export default async function Home() {
-  // const data = await getPosts();
-  const data1 = await getPosts();
-  // console.log(data1);
+  const data = await getPosts();
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {data1.map((post: post) => {
+      {data.map((post: post) => {
         return (
-          <Post key={post.id} title={post.title} published={post.published} />
+          <Card key={post.id} title={post.title} published={post.published} />
         );
       })}
     </main>
