@@ -1,7 +1,7 @@
 import Card from "./Card";
 
 async function getPosts() {
-  const res = await fetch(`${process.env.BASE_URL}/api/post`);
+  const res = await fetch(`/api/post`, { cache: "no-store" });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -20,9 +20,7 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       {data.map((post: post) => {
-        return (
-          <Card key={post.id} title={post.title} published={post.published} />
-        );
+        return <Card key={post.id} title={post.title} />;
       })}
     </main>
   );
