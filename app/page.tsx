@@ -1,7 +1,7 @@
 import Post from "./Post";
 
 async function getPosts() {
-  const res = await fetch(`${process.env.BASE_URL}api/post`);
+  const res = await fetch(`/api/post`);
   return res.json();
 }
 
